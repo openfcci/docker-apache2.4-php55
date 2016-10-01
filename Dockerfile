@@ -6,7 +6,6 @@ RUN apt-get update && apt-get dist-upgrade -y
 RUN apt-get -y install \
   apache2 \
   libapache2-mod-php5 \
-  memcached \
   php5-mysql \
   php5-ldap \
   php5-gd \
