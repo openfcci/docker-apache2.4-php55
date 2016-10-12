@@ -14,8 +14,7 @@ RUN apt-get -y install \
   php-pear 
 
 EXPOSE 80
-ADD run.sh /run.sh
-RUN ln -s /var/log/apache2 /etc/apache2/logs
-RUN sed -i 's/memory_limit = 128M/memory_limit = 1280M/' /etc/php5/apache2/php.ini
-RUN chmod 755 /run.sh
-CMD ["run.sh"]
+ADD run.sh usr/local/sbin/run.sh
+RUN chmod 755 usr/local/sbin/run.sh
+
+ENTRYPOINT ["run.sh"]
