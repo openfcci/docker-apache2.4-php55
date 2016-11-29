@@ -8,6 +8,8 @@ else
     a2enmod rewrite
 fi
 
+export ENVIRONMENT=docker
 source /etc/apache2/envvars
+apachectl configtest
 tail -F /var/log/apache2/* &
 exec apache2 -D FOREGROUND
