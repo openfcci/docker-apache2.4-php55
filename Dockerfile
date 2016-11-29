@@ -14,7 +14,10 @@ RUN apt-get -y install \
   php-pear 
 
 EXPOSE 80
-ADD run.sh usr/local/sbin/run.sh
+ADD lib/run.sh usr/local/sbin/run.sh
 RUN chmod 755 usr/local/sbin/run.sh
+RUN apachectl configtest
+RUN rm -f /etc/apache2/sites-enabled/*
+RUN ln -s /var/log/apache2 /etc/apache2/logs
 
 ENTRYPOINT ["run.sh"]
