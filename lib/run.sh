@@ -9,7 +9,8 @@ else
 fi
 
 export ENVIRONMENT=docker
+rm -f /var/run/apache2/apache2.pid
 source /etc/apache2/envvars
 apachectl configtest
 tail -F /var/log/apache2/* &
-exec apache2 -D FOREGROUND
+exec apache2 -DFOREGROUND
